@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KojinModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="KojinModelStoreContainer">
+          <EntitySet Name="ErrorInfo" EntityType="KojinModel.Store.ErrorInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Country" EntityType="KojinModel.Store.Kojin_Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Cust_Master" EntityType="KojinModel.Store.Kojin_Cust_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Item_Category" EntityType="KojinModel.Store.Kojin_Item_Category" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Item_Master" EntityType="KojinModel.Store.Kojin_Item_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Item_Replanishment" EntityType="KojinModel.Store.Kojin_Item_Replanishment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Item_Unit_Master" EntityType="KojinModel.Store.Kojin_Item_Unit_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Kitchen_Item_Master" EntityType="KojinModel.Store.Kojin_Kitchen_Item_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Kitchen_Master" EntityType="KojinModel.Store.Kojin_Kitchen_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_Kitchen_Tray_Master" EntityType="KojinModel.Store.Kojin_Kitchen_Tray_Master" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_operational_country" EntityType="KojinModel.Store.Kojin_operational_country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kojin_province" EntityType="KojinModel.Store.Kojin_province" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="kojin_Vendor_Details" EntityType="KojinModel.Store.kojin_Vendor_Details" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="ErrorInfo">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ExceptionMsg" Type="varchar" MaxLength="100" />
+          <Property Name="ExceptionType" Type="varchar" MaxLength="100" />
+          <Property Name="ExceptionSource" Type="nvarchar(max)" />
+          <Property Name="ExceptionURL" Type="varchar" MaxLength="100" />
+          <Property Name="Logdate" Type="datetime" />
+          <Property Name="IPAdd" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Kojin_Country">
+          <Key>
+            <PropertyRef Name="cou_code" />
+          </Key>
+          <Property Name="cou_code" Type="nvarchar" Nullable="false" MaxLength="2" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="cou_name" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="iso3" Type="varchar" MaxLength="3" />
+          <Property Name="numcode" Type="int" />
+        </EntityType>
+        <EntityType Name="Kojin_Cust_Master">
+          <Key>
+            <PropertyRef Name="Cust_id" />
+          </Key>
+          <Property Name="Cust_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Name1" Type="varchar" MaxLength="50" />
+          <Property Name="Name2" Type="varchar" MaxLength="50" />
+          <Property Name="Name3" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="100" />
+          <Property Name="Address2" Type="varchar" MaxLength="100" />
+          <Property Name="Address3" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Pincode" Type="varchar" MaxLength="50" />
+          <Property Name="UserType" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+          <Property Name="DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Category">
+          <Key>
+            <PropertyRef Name="Item_Cat_id" />
+          </Key>
+          <Property Name="Item_Cat_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Item_Cat_Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Item_Cat_Desc1" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Cat_Desc2" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Cat_Desc3" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Cat_Status" Type="int" />
+          <Property Name="Item_Cat_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Master">
+          <Key>
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Item_Cat_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Item_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Item_Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Item_Desc1" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Desc2" Type="varchar" MaxLength="100" />
+          <Property Name="Item_UnitMeasure" Type="varchar" MaxLength="50" />
+          <Property Name="Item_Status" Type="int" />
+          <Property Name="Item_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Replanishment">
+          <Key>
+            <PropertyRef Name="Item_Rep_Sno" />
+          </Key>
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Kit_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Rep_Window" Type="varchar" MaxLength="50" />
+          <Property Name="Reorder_value" Type="varchar" MaxLength="5" />
+          <Property Name="Item_Rep_Status" Type="int" />
+          <Property Name="Item_Rep_DateTime" Type="datetime" />
+          <Property Name="Item_Rep_Sno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Unit_Master">
+          <Key>
+            <PropertyRef Name="Unit_Name" />
+          </Key>
+          <Property Name="Unit_Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Unit_Status" Type="int" />
+          <Property Name="Unit_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_Kitchen_Item_Master">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Kit_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Tray_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Cell_Id" Type="varchar" MaxLength="50" />
+          <Property Name="Item_Cate" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Code" Type="varchar" MaxLength="100" />
+          <Property Name="Item_Details" Type="varchar" MaxLength="100" />
+          <Property Name="Unit_Of_Measure" Type="varchar" MaxLength="50" />
+          <Property Name="Min_Qty" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Max_Qty" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Re_Order_Qty" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="DSMB_Vendor" Type="varchar" MaxLength="100" />
+          <Property Name="Max_V_SMB_Vendor" Type="varchar" MaxLength="100" />
+          <Property Name="D_Big_Ret" Type="varchar" MaxLength="100" />
+          <Property Name="Min_V_Big_Ret" Type="varchar" MaxLength="100" />
+          <Property Name="CI_Status" Type="int" />
+          <Property Name="CI_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_Kitchen_Master">
+          <Key>
+            <PropertyRef Name="Kit_id" />
+          </Key>
+          <Property Name="Cust_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Kit_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Kit_Loc1" Type="varchar" MaxLength="100" />
+          <Property Name="Kit_Loc2" Type="varchar" MaxLength="100" />
+          <Property Name="Kit_Type" Type="varchar" MaxLength="50" />
+          <Property Name="App_Small_V" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Small_V" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="App_Meduim_V" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Meduim_V" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="App_Larger_V" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Larger_V" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="App_Extra_LV" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Extra_LV" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Kit_Status" Type="int" />
+          <Property Name="Kit_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_Kitchen_Tray_Master">
+          <Key>
+            <PropertyRef Name="Tray_Id" />
+          </Key>
+          <Property Name="Kit_id" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Tray_Id" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="No_Of_Cell" Type="int" />
+          <Property Name="D_Cell_1" Type="varchar" MaxLength="100" />
+          <Property Name="D_Cell_2" Type="varchar" MaxLength="100" />
+          <Property Name="D_Cell_3" Type="varchar" MaxLength="100" />
+          <Property Name="D_Cell_4" Type="varchar" MaxLength="100" />
+          <Property Name="D_Cell_5" Type="varchar" MaxLength="100" />
+          <Property Name="D_Temp_1" Type="varchar" MaxLength="100" />
+          <Property Name="D_Status" Type="int" />
+          <Property Name="D_DateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Kojin_operational_country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Code" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Kojin_province">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="province_name" Type="varchar" Nullable="false" MaxLength="40" />
+          <Property Name="province_code" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="cou_code" Type="char" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="kojin_Vendor_Details">
+          <Key>
+            <PropertyRef Name="Ven_Code" />
+          </Key>
+          <Property Name="Ven_Code" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Ven_Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Ven_Address1" Type="varchar" MaxLength="100" />
+          <Property Name="Ven_Address2" Type="varchar" MaxLength="100" />
+          <Property Name="Ven_Address3" Type="varchar" MaxLength="100" />
+          <Property Name="Ven_City" Type="varchar" MaxLength="100" />
+          <Property Name="Ven_State" Type="varchar" MaxLength="100" />
+          <Property Name="Ven_Country" Type="varchar" MaxLength="100" />
+          <Property Name="Ven_Pincode" Type="varchar" MaxLength="20" />
+          <Property Name="Ven_Phone" Type="varchar" MaxLength="30" />
+          <Property Name="Ven_Email" Type="varchar" MaxLength="50" />
+          <Property Name="Ven_Status" Type="int" />
+          <Property Name="Ven_DateTime" Type="datetime" />
+        </EntityType>
+        <Function Name="ExceptionLoggingToDataBase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExceptionMsg" Type="varchar" Mode="In" />
+          <Parameter Name="ExceptionType" Type="varchar" Mode="In" />
+          <Parameter Name="ExceptionSource" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="ExceptionURL" Type="varchar" Mode="In" />
+          <Parameter Name="IPAdd" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_Kojin_InsertUpdateCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cust_id" Type="varchar" Mode="In" />
+          <Parameter Name="Name1" Type="varchar" Mode="In" />
+          <Parameter Name="Name2" Type="varchar" Mode="In" />
+          <Parameter Name="Name3" Type="varchar" Mode="In" />
+          <Parameter Name="Gender" Type="varchar" Mode="In" />
+          <Parameter Name="Address1" Type="varchar" Mode="In" />
+          <Parameter Name="Address2" Type="varchar" Mode="In" />
+          <Parameter Name="Address3" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode" Type="varchar" Mode="In" />
+          <Parameter Name="UserType" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_Kojin_InsertUpdateItemCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Item_Cat_id" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Cat_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Cat_Desc1" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Cat_Desc2" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Cat_Desc3" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_Kojin_InsertUpdateItemCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Item_Cat_id" Type="varchar" Mode="In" />
+          <Parameter Name="Item_id" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Desc1" Type="varchar" Mode="In" />
+          <Parameter Name="Item_Desc2" Type="varchar" Mode="In" />
+          <Parameter Name="Item_UnitMeasure" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_Kojin_InsertUpdateKitchen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cust_id" Type="varchar" Mode="In" />
+          <Parameter Name="Kit_id" Type="varchar" Mode="In" />
+          <Parameter Name="Kit_Loc1" Type="varchar" Mode="In" />
+          <Parameter Name="Kit_Loc2" Type="varchar" Mode="In" />
+          <Parameter Name="Kit_Type" Type="varchar" Mode="In" />
+          <Parameter Name="App_Small_V" Type="decimal" Mode="In" />
+          <Parameter Name="Act_Small_V" Type="decimal" Mode="In" />
+          <Parameter Name="App_Meduim_V" Type="decimal" Mode="In" />
+          <Parameter Name="Act_Meduim_V" Type="decimal" Mode="In" />
+          <Parameter Name="App_Larger_V" Type="decimal" Mode="In" />
+          <Parameter Name="Act_Larger_V" Type="decimal" Mode="In" />
+          <Parameter Name="App_Extra_LV" Type="decimal" Mode="In" />
+          <Parameter Name="Act_Extra_LV" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="PROC_Kojin_InsertUpdateKitchenTrayMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Kit_id" Type="varchar" Mode="In" />
+          <Parameter Name="Tray_Id" Type="varchar" Mode="In" />
+          <Parameter Name="No_Of_Cell" Type="int" Mode="In" />
+          <Parameter Name="D_Cell_1" Type="varchar" Mode="In" />
+          <Parameter Name="D_Cell_2" Type="varchar" Mode="In" />
+          <Parameter Name="D_Cell_3" Type="varchar" Mode="In" />
+          <Parameter Name="D_Cell_4" Type="varchar" Mode="In" />
+          <Parameter Name="D_Cell_5" Type="varchar" Mode="In" />
+          <Parameter Name="D_Temp_1" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PROC_Kojin_SelectItemMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PROC_Kojin_SelectItemUnitMaster" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KojinModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="KojinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ErrorInfoes" EntityType="KojinModel.ErrorInfo" />
+          <EntitySet Name="Kojin_Country" EntityType="KojinModel.Kojin_Country" />
+          <EntitySet Name="Kojin_Cust_Master" EntityType="KojinModel.Kojin_Cust_Master" />
+          <EntitySet Name="Kojin_Item_Category" EntityType="KojinModel.Kojin_Item_Category" />
+          <EntitySet Name="Kojin_Item_Master" EntityType="KojinModel.Kojin_Item_Master" />
+          <EntitySet Name="Kojin_Item_Replanishment" EntityType="KojinModel.Kojin_Item_Replanishment" />
+          <EntitySet Name="Kojin_Item_Unit_Master" EntityType="KojinModel.Kojin_Item_Unit_Master" />
+          <EntitySet Name="Kojin_Kitchen_Item_Master" EntityType="KojinModel.Kojin_Kitchen_Item_Master" />
+          <EntitySet Name="Kojin_Kitchen_Master" EntityType="KojinModel.Kojin_Kitchen_Master" />
+          <EntitySet Name="Kojin_Kitchen_Tray_Master" EntityType="KojinModel.Kojin_Kitchen_Tray_Master" />
+          <EntitySet Name="Kojin_operational_country" EntityType="KojinModel.Kojin_operational_country" />
+          <EntitySet Name="Kojin_province" EntityType="KojinModel.Kojin_province" />
+          <EntitySet Name="kojin_Vendor_Details" EntityType="KojinModel.kojin_Vendor_Details" />
+          <FunctionImport Name="ExceptionLoggingToDataBase">
+            <Parameter Name="ExceptionMsg" Mode="In" Type="String" />
+            <Parameter Name="ExceptionType" Mode="In" Type="String" />
+            <Parameter Name="ExceptionSource" Mode="In" Type="String" />
+            <Parameter Name="ExceptionURL" Mode="In" Type="String" />
+            <Parameter Name="IPAdd" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Kojin_InsertUpdateCustomer">
+            <Parameter Name="Cust_id" Mode="In" Type="String" />
+            <Parameter Name="Name1" Mode="In" Type="String" />
+            <Parameter Name="Name2" Mode="In" Type="String" />
+            <Parameter Name="Name3" Mode="In" Type="String" />
+            <Parameter Name="Gender" Mode="In" Type="String" />
+            <Parameter Name="Address1" Mode="In" Type="String" />
+            <Parameter Name="Address2" Mode="In" Type="String" />
+            <Parameter Name="Address3" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Country" Mode="In" Type="String" />
+            <Parameter Name="Pincode" Mode="In" Type="String" />
+            <Parameter Name="UserType" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Kojin_InsertUpdateItemCategory">
+            <Parameter Name="Item_Cat_id" Mode="In" Type="String" />
+            <Parameter Name="Item_Cat_Name" Mode="In" Type="String" />
+            <Parameter Name="Item_Cat_Desc1" Mode="In" Type="String" />
+            <Parameter Name="Item_Cat_Desc2" Mode="In" Type="String" />
+            <Parameter Name="Item_Cat_Desc3" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Kojin_InsertUpdateItemCode" ReturnType="Collection(KojinModel.PROC_Kojin_InsertUpdateItemCode_Result)">
+            <Parameter Name="Item_Cat_id" Mode="In" Type="String" />
+            <Parameter Name="Item_id" Mode="In" Type="String" />
+            <Parameter Name="Item_Name" Mode="In" Type="String" />
+            <Parameter Name="Item_Desc1" Mode="In" Type="String" />
+            <Parameter Name="Item_Desc2" Mode="In" Type="String" />
+            <Parameter Name="Item_UnitMeasure" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Kojin_InsertUpdateKitchen">
+            <Parameter Name="Cust_id" Mode="In" Type="String" />
+            <Parameter Name="Kit_id" Mode="In" Type="String" />
+            <Parameter Name="Kit_Loc1" Mode="In" Type="String" />
+            <Parameter Name="Kit_Loc2" Mode="In" Type="String" />
+            <Parameter Name="Kit_Type" Mode="In" Type="String" />
+            <Parameter Name="App_Small_V" Mode="In" Type="Decimal" />
+            <Parameter Name="Act_Small_V" Mode="In" Type="Decimal" />
+            <Parameter Name="App_Meduim_V" Mode="In" Type="Decimal" />
+            <Parameter Name="Act_Meduim_V" Mode="In" Type="Decimal" />
+            <Parameter Name="App_Larger_V" Mode="In" Type="Decimal" />
+            <Parameter Name="Act_Larger_V" Mode="In" Type="Decimal" />
+            <Parameter Name="App_Extra_LV" Mode="In" Type="Decimal" />
+            <Parameter Name="Act_Extra_LV" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Kojin_InsertUpdateKitchenTrayMaster">
+            <Parameter Name="Kit_id" Mode="In" Type="String" />
+            <Parameter Name="Tray_Id" Mode="In" Type="String" />
+            <Parameter Name="No_Of_Cell" Mode="In" Type="Int32" />
+            <Parameter Name="D_Cell_1" Mode="In" Type="String" />
+            <Parameter Name="D_Cell_2" Mode="In" Type="String" />
+            <Parameter Name="D_Cell_3" Mode="In" Type="String" />
+            <Parameter Name="D_Cell_4" Mode="In" Type="String" />
+            <Parameter Name="D_Cell_5" Mode="In" Type="String" />
+            <Parameter Name="D_Temp_1" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PROC_Kojin_SelectItemMaster" />
+          <FunctionImport Name="PROC_Kojin_SelectItemUnitMaster" />
+        </EntityContainer>
+        <EntityType Name="ErrorInfo">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExceptionMsg" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ExceptionType" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ExceptionSource" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ExceptionURL" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Logdate" Type="DateTime" Precision="3" />
+          <Property Name="IPAdd" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Kojin_Country">
+          <Key>
+            <PropertyRef Name="cou_code" />
+          </Key>
+          <Property Name="cou_code" Type="String" Nullable="false" MaxLength="2" Unicode="true" FixedLength="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="cou_name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="iso3" Type="String" MaxLength="3" Unicode="false" FixedLength="false" />
+          <Property Name="numcode" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Kojin_Cust_Master">
+          <Key>
+            <PropertyRef Name="Cust_id" />
+          </Key>
+          <Property Name="Cust_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name1" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name2" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Name3" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Address1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Address3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Pincode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UserType" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Category">
+          <Key>
+            <PropertyRef Name="Item_Cat_id" />
+          </Key>
+          <Property Name="Item_Cat_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Cat_Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Cat_Desc1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Cat_Desc2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Cat_Desc3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Cat_Status" Type="Int32" />
+          <Property Name="Item_Cat_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Master">
+          <Key>
+            <PropertyRef Name="Item_id" />
+          </Key>
+          <Property Name="Item_Cat_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Item_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Desc1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Desc2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_UnitMeasure" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Status" Type="Int32" />
+          <Property Name="Item_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Replanishment">
+          <Key>
+            <PropertyRef Name="Item_Rep_Sno" />
+          </Key>
+          <Property Name="Cust_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Kit_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Rep_Window" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Reorder_value" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Rep_Status" Type="Int32" />
+          <Property Name="Item_Rep_DateTime" Type="DateTime" Precision="3" />
+          <Property Name="Item_Rep_Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Kojin_Item_Unit_Master">
+          <Key>
+            <PropertyRef Name="Unit_Name" />
+          </Key>
+          <Property Name="Unit_Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Unit_Status" Type="Int32" />
+          <Property Name="Unit_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_Kitchen_Item_Master">
+          <Key>
+            <PropertyRef Name="Sno" />
+          </Key>
+          <Property Name="Sno" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cust_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Kit_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Tray_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Cell_Id" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Cate" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Code" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Item_Details" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Unit_Of_Measure" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Min_Qty" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Max_Qty" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Re_Order_Qty" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="DSMB_Vendor" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Max_V_SMB_Vendor" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Big_Ret" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Min_V_Big_Ret" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CI_Status" Type="Int32" />
+          <Property Name="CI_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_Kitchen_Master">
+          <Key>
+            <PropertyRef Name="Kit_id" />
+          </Key>
+          <Property Name="Cust_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Kit_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Kit_Loc1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Kit_Loc2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Kit_Type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="App_Small_V" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Small_V" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="App_Meduim_V" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Meduim_V" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="App_Larger_V" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Larger_V" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="App_Extra_LV" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Act_Extra_LV" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Kit_Status" Type="Int32" />
+          <Property Name="Kit_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_Kitchen_Tray_Master">
+          <Key>
+            <PropertyRef Name="Tray_Id" />
+          </Key>
+          <Property Name="Kit_id" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Tray_Id" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="No_Of_Cell" Type="Int32" />
+          <Property Name="D_Cell_1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Cell_2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Cell_3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Cell_4" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Cell_5" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Temp_1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="D_Status" Type="Int32" />
+          <Property Name="D_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Kojin_operational_country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Code" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Kojin_province">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="province_name" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+          <Property Name="province_code" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="cou_code" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="kojin_Vendor_Details">
+          <Key>
+            <PropertyRef Name="Ven_Code" />
+          </Key>
+          <Property Name="Ven_Code" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Address1" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Address2" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Address3" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_City" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_State" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Country" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Pincode" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Phone" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Ven_Status" Type="Int32" />
+          <Property Name="Ven_DateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="PROC_Kojin_InsertUpdateItemCode_Result">
+          <Property Type="String" Name="Item_Cat_id" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Item_Cat_Name" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Item_Cat_Desc1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Item_Cat_Desc2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Item_Cat_Desc3" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Item_Cat_Status" Nullable="true" />
+          <Property Type="DateTime" Name="Item_Cat_DateTime" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KojinModelStoreContainer" CdmEntityContainer="KojinEntities">
+          <EntitySetMapping Name="ErrorInfoes">
+            <EntityTypeMapping TypeName="KojinModel.ErrorInfo">
+              <MappingFragment StoreEntitySet="ErrorInfo">
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
+                <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="ExceptionSource" ColumnName="ExceptionSource" />
+                <ScalarProperty Name="ExceptionURL" ColumnName="ExceptionURL" />
+                <ScalarProperty Name="Logdate" ColumnName="Logdate" />
+                <ScalarProperty Name="IPAdd" ColumnName="IPAdd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Country">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Country">
+              <MappingFragment StoreEntitySet="Kojin_Country">
+                <ScalarProperty Name="cou_code" ColumnName="cou_code" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="cou_name" ColumnName="cou_name" />
+                <ScalarProperty Name="iso3" ColumnName="iso3" />
+                <ScalarProperty Name="numcode" ColumnName="numcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Cust_Master">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Cust_Master">
+              <MappingFragment StoreEntitySet="Kojin_Cust_Master">
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Name1" ColumnName="Name1" />
+                <ScalarProperty Name="Name2" ColumnName="Name2" />
+                <ScalarProperty Name="Name3" ColumnName="Name3" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Item_Category">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Item_Category">
+              <MappingFragment StoreEntitySet="Kojin_Item_Category">
+                <ScalarProperty Name="Item_Cat_id" ColumnName="Item_Cat_id" />
+                <ScalarProperty Name="Item_Cat_Name" ColumnName="Item_Cat_Name" />
+                <ScalarProperty Name="Item_Cat_Desc1" ColumnName="Item_Cat_Desc1" />
+                <ScalarProperty Name="Item_Cat_Desc2" ColumnName="Item_Cat_Desc2" />
+                <ScalarProperty Name="Item_Cat_Desc3" ColumnName="Item_Cat_Desc3" />
+                <ScalarProperty Name="Item_Cat_Status" ColumnName="Item_Cat_Status" />
+                <ScalarProperty Name="Item_Cat_DateTime" ColumnName="Item_Cat_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Item_Master">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Item_Master">
+              <MappingFragment StoreEntitySet="Kojin_Item_Master">
+                <ScalarProperty Name="Item_Cat_id" ColumnName="Item_Cat_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="Item_Desc1" ColumnName="Item_Desc1" />
+                <ScalarProperty Name="Item_Desc2" ColumnName="Item_Desc2" />
+                <ScalarProperty Name="Item_UnitMeasure" ColumnName="Item_UnitMeasure" />
+                <ScalarProperty Name="Item_Status" ColumnName="Item_Status" />
+                <ScalarProperty Name="Item_DateTime" ColumnName="Item_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Item_Replanishment">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Item_Replanishment">
+              <MappingFragment StoreEntitySet="Kojin_Item_Replanishment">
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Kit_Id" ColumnName="Kit_Id" />
+                <ScalarProperty Name="Rep_Window" ColumnName="Rep_Window" />
+                <ScalarProperty Name="Reorder_value" ColumnName="Reorder_value" />
+                <ScalarProperty Name="Item_Rep_Status" ColumnName="Item_Rep_Status" />
+                <ScalarProperty Name="Item_Rep_DateTime" ColumnName="Item_Rep_DateTime" />
+                <ScalarProperty Name="Item_Rep_Sno" ColumnName="Item_Rep_Sno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Item_Unit_Master">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Item_Unit_Master">
+              <MappingFragment StoreEntitySet="Kojin_Item_Unit_Master">
+                <ScalarProperty Name="Unit_Name" ColumnName="Unit_Name" />
+                <ScalarProperty Name="Unit_Status" ColumnName="Unit_Status" />
+                <ScalarProperty Name="Unit_DateTime" ColumnName="Unit_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Kitchen_Item_Master">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Kitchen_Item_Master">
+              <MappingFragment StoreEntitySet="Kojin_Kitchen_Item_Master">
+                <ScalarProperty Name="Sno" ColumnName="Sno" />
+                <ScalarProperty Name="Cust_Id" ColumnName="Cust_Id" />
+                <ScalarProperty Name="Kit_Id" ColumnName="Kit_Id" />
+                <ScalarProperty Name="Tray_Id" ColumnName="Tray_Id" />
+                <ScalarProperty Name="Cell_Id" ColumnName="Cell_Id" />
+                <ScalarProperty Name="Item_Cate" ColumnName="Item_Cate" />
+                <ScalarProperty Name="Item_Code" ColumnName="Item_Code" />
+                <ScalarProperty Name="Item_Details" ColumnName="Item_Details" />
+                <ScalarProperty Name="Unit_Of_Measure" ColumnName="Unit_Of_Measure" />
+                <ScalarProperty Name="Min_Qty" ColumnName="Min_Qty" />
+                <ScalarProperty Name="Max_Qty" ColumnName="Max_Qty" />
+                <ScalarProperty Name="Re_Order_Qty" ColumnName="Re_Order_Qty" />
+                <ScalarProperty Name="DSMB_Vendor" ColumnName="DSMB_Vendor" />
+                <ScalarProperty Name="Max_V_SMB_Vendor" ColumnName="Max_V_SMB_Vendor" />
+                <ScalarProperty Name="D_Big_Ret" ColumnName="D_Big_Ret" />
+                <ScalarProperty Name="Min_V_Big_Ret" ColumnName="Min_V_Big_Ret" />
+                <ScalarProperty Name="CI_Status" ColumnName="CI_Status" />
+                <ScalarProperty Name="CI_DateTime" ColumnName="CI_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Kitchen_Master">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Kitchen_Master">
+              <MappingFragment StoreEntitySet="Kojin_Kitchen_Master">
+                <ScalarProperty Name="Cust_id" ColumnName="Cust_id" />
+                <ScalarProperty Name="Kit_id" ColumnName="Kit_id" />
+                <ScalarProperty Name="Kit_Loc1" ColumnName="Kit_Loc1" />
+                <ScalarProperty Name="Kit_Loc2" ColumnName="Kit_Loc2" />
+                <ScalarProperty Name="Kit_Type" ColumnName="Kit_Type" />
+                <ScalarProperty Name="App_Small_V" ColumnName="App_Small_V" />
+                <ScalarProperty Name="Act_Small_V" ColumnName="Act_Small_V" />
+                <ScalarProperty Name="App_Meduim_V" ColumnName="App_Meduim_V" />
+                <ScalarProperty Name="Act_Meduim_V" ColumnName="Act_Meduim_V" />
+                <ScalarProperty Name="App_Larger_V" ColumnName="App_Larger_V" />
+                <ScalarProperty Name="Act_Larger_V" ColumnName="Act_Larger_V" />
+                <ScalarProperty Name="App_Extra_LV" ColumnName="App_Extra_LV" />
+                <ScalarProperty Name="Act_Extra_LV" ColumnName="Act_Extra_LV" />
+                <ScalarProperty Name="Kit_Status" ColumnName="Kit_Status" />
+                <ScalarProperty Name="Kit_DateTime" ColumnName="Kit_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_Kitchen_Tray_Master">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_Kitchen_Tray_Master">
+              <MappingFragment StoreEntitySet="Kojin_Kitchen_Tray_Master">
+                <ScalarProperty Name="Kit_id" ColumnName="Kit_id" />
+                <ScalarProperty Name="Tray_Id" ColumnName="Tray_Id" />
+                <ScalarProperty Name="No_Of_Cell" ColumnName="No_Of_Cell" />
+                <ScalarProperty Name="D_Cell_1" ColumnName="D_Cell_1" />
+                <ScalarProperty Name="D_Cell_2" ColumnName="D_Cell_2" />
+                <ScalarProperty Name="D_Cell_3" ColumnName="D_Cell_3" />
+                <ScalarProperty Name="D_Cell_4" ColumnName="D_Cell_4" />
+                <ScalarProperty Name="D_Cell_5" ColumnName="D_Cell_5" />
+                <ScalarProperty Name="D_Temp_1" ColumnName="D_Temp_1" />
+                <ScalarProperty Name="D_Status" ColumnName="D_Status" />
+                <ScalarProperty Name="D_DateTime" ColumnName="D_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_operational_country">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_operational_country">
+              <MappingFragment StoreEntitySet="Kojin_operational_country">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Country_Code" ColumnName="Country_Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kojin_province">
+            <EntityTypeMapping TypeName="KojinModel.Kojin_province">
+              <MappingFragment StoreEntitySet="Kojin_province">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="province_name" ColumnName="province_name" />
+                <ScalarProperty Name="province_code" ColumnName="province_code" />
+                <ScalarProperty Name="cou_code" ColumnName="cou_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kojin_Vendor_Details">
+            <EntityTypeMapping TypeName="KojinModel.kojin_Vendor_Details">
+              <MappingFragment StoreEntitySet="kojin_Vendor_Details">
+                <ScalarProperty Name="Ven_Code" ColumnName="Ven_Code" />
+                <ScalarProperty Name="Ven_Name" ColumnName="Ven_Name" />
+                <ScalarProperty Name="Ven_Address1" ColumnName="Ven_Address1" />
+                <ScalarProperty Name="Ven_Address2" ColumnName="Ven_Address2" />
+                <ScalarProperty Name="Ven_Address3" ColumnName="Ven_Address3" />
+                <ScalarProperty Name="Ven_City" ColumnName="Ven_City" />
+                <ScalarProperty Name="Ven_State" ColumnName="Ven_State" />
+                <ScalarProperty Name="Ven_Country" ColumnName="Ven_Country" />
+                <ScalarProperty Name="Ven_Pincode" ColumnName="Ven_Pincode" />
+                <ScalarProperty Name="Ven_Phone" ColumnName="Ven_Phone" />
+                <ScalarProperty Name="Ven_Email" ColumnName="Ven_Email" />
+                <ScalarProperty Name="Ven_Status" ColumnName="Ven_Status" />
+                <ScalarProperty Name="Ven_DateTime" ColumnName="Ven_DateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ExceptionLoggingToDataBase" FunctionName="KojinModel.Store.ExceptionLoggingToDataBase" />
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_InsertUpdateCustomer" FunctionName="KojinModel.Store.PROC_Kojin_InsertUpdateCustomer" />
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_InsertUpdateItemCategory" FunctionName="KojinModel.Store.PROC_Kojin_InsertUpdateItemCategory" />
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_InsertUpdateItemCode" FunctionName="KojinModel.Store.PROC_Kojin_InsertUpdateItemCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="KojinModel.PROC_Kojin_InsertUpdateItemCode_Result">
+                <ScalarProperty Name="Item_Cat_id" ColumnName="Item_Cat_id" />
+                <ScalarProperty Name="Item_Cat_Name" ColumnName="Item_Cat_Name" />
+                <ScalarProperty Name="Item_Cat_Desc1" ColumnName="Item_Cat_Desc1" />
+                <ScalarProperty Name="Item_Cat_Desc2" ColumnName="Item_Cat_Desc2" />
+                <ScalarProperty Name="Item_Cat_Desc3" ColumnName="Item_Cat_Desc3" />
+                <ScalarProperty Name="Item_Cat_Status" ColumnName="Item_Cat_Status" />
+                <ScalarProperty Name="Item_Cat_DateTime" ColumnName="Item_Cat_DateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_InsertUpdateKitchen" FunctionName="KojinModel.Store.PROC_Kojin_InsertUpdateKitchen" />
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_InsertUpdateKitchenTrayMaster" FunctionName="KojinModel.Store.PROC_Kojin_InsertUpdateKitchenTrayMaster" />
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_SelectItemMaster" FunctionName="KojinModel.Store.PROC_Kojin_SelectItemMaster" />
+          <FunctionImportMapping FunctionImportName="PROC_Kojin_SelectItemUnitMaster" FunctionName="KojinModel.Store.PROC_Kojin_SelectItemUnitMaster" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

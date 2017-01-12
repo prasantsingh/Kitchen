@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kojin", "Kojin\Kojin.csproj", "{DC58EFD2-BA66-4D1A-AD5E-7EAF7B4954E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kojin.BAL", "Kojin.BAL\Kojin.BAL.csproj", "{38DFA2C1-5BC4-4F38-99A9-531993CEC20C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kojin.DAL", "Kojin.DAL\Kojin.DAL.csproj", "{D5BEEF58-C3D8-4343-91AC-82EC2348B522}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC58EFD2-BA66-4D1A-AD5E-7EAF7B4954E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC58EFD2-BA66-4D1A-AD5E-7EAF7B4954E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC58EFD2-BA66-4D1A-AD5E-7EAF7B4954E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC58EFD2-BA66-4D1A-AD5E-7EAF7B4954E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38DFA2C1-5BC4-4F38-99A9-531993CEC20C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38DFA2C1-5BC4-4F38-99A9-531993CEC20C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38DFA2C1-5BC4-4F38-99A9-531993CEC20C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38DFA2C1-5BC4-4F38-99A9-531993CEC20C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5BEEF58-C3D8-4343-91AC-82EC2348B522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5BEEF58-C3D8-4343-91AC-82EC2348B522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5BEEF58-C3D8-4343-91AC-82EC2348B522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5BEEF58-C3D8-4343-91AC-82EC2348B522}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
