@@ -22,6 +22,7 @@ namespace Kojin.Helper
                 drp.DataValueField = "cou_code";
                 drp.DataBind();
                 drp.Items.Insert(0, new ListItem("--Select--", "0"));
+
             }
             catch (Exception ex)
             {
