@@ -70,6 +70,27 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Customer\assets\css\bootstrap.css" />
+    <Content Include="Customer\assets\css\custom.css" />
+    <Content Include="Customer\assets\css\font-awesome.css" />
+    <Content Include="Customer\assets\img\1.png" />
+    <Content Include="Customer\assets\img\2.png" />
+    <Content Include="Customer\assets\img\3.png" />
+    <Content Include="Customer\assets\img\4.png" />
+    <Content Include="Customer\assets\img\find_user.png" />
+    <Content Include="Customer\assets\js\bootstrap.min.js" />
+    <Content Include="Customer\assets\js\custom.js" />
+    <Content Include="Customer\assets\js\dataTables\dataTables.bootstrap.css" />
+    <Content Include="Customer\assets\js\dataTables\dataTables.bootstrap.js" />
+    <Content Include="Customer\assets\js\dataTables\jquery.dataTables.js" />
+    <Content Include="Customer\assets\js\jquery-1.10.2.js" />
+    <Content Include="Customer\assets\js\jquery.metisMenu.js" />
+    <Content Include="Customer\assets\js\morris\morris-0.4.3.min.css" />
+    <Content Include="Customer\assets\js\morris\morris.js" />
+    <Content Include="Customer\assets\js\morris\raphael-2.1.0.min.js" />
+    <Content Include="Customer\CustomerDashBoard.aspx" />
+    <Content Include="Customer\Login.aspx" />
+    <Content Include="Customer\ProductReport.aspx" />
     <Content Include="KitchenAdmin\assets\avatars\avatar.png" />
     <Content Include="KitchenAdmin\assets\avatars\avatar1.png" />
     <Content Include="KitchenAdmin\assets\avatars\avatar2.png" />
@@ -271,6 +292,34 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customer\CustomerDashBoard.aspx.cs">
+      <DependentUpon>CustomerDashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerDashBoard.aspx.designer.cs">
+      <DependentUpon>CustomerDashBoard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerMaster.Master.cs">
+      <DependentUpon>CustomerMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerMaster.Master.designer.cs">
+      <DependentUpon>CustomerMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\ProductReport.aspx.cs">
+      <DependentUpon>ProductReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\ProductReport.aspx.designer.cs">
+      <DependentUpon>ProductReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Helper\CommanHelper.cs" />
     <Compile Include="Helper\Conversion.cs" />
     <Compile Include="KitchenAdmin\CellVsItem.aspx.cs">
@@ -386,6 +435,17 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Customer\CustomerMaster.Master" />
+    <Content Include="Customer\assets\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Customer\assets\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Customer\assets\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Customer\assets\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Customer\assets\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Customer\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Customer\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Customer\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Customer\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Customer\assets\img\Thumbs.db" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

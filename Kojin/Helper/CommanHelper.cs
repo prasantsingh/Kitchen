@@ -177,8 +177,6 @@ namespace Kojin.Helper
         {
             try
             {
-
-
                 VendorFactory oVendorFactory = new VendorFactory();
                 List<VendorEntity> oVendorEntity = oVendorFactory.GetVendor();
                 if (oVendorEntity != null && oVendorEntity.Count() > 0)
